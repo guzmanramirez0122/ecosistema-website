@@ -139,17 +139,17 @@
     }
     @media (max-width:400px){ .card-number { display:none; } }
 
-    /* Hero entrance stagger */
-    @keyframes rg-hero-rise { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
+    /* Hero entrance stagger — compact + snappy */
+    @keyframes rg-hero-rise { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
     .hero-bg > div > div > * {
       opacity: 0;
-      animation: rg-hero-rise 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      animation: rg-hero-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
-    .hero-bg > div > div > *:nth-child(1) { animation-delay: 180ms; }
-    .hero-bg > div > div > *:nth-child(2) { animation-delay: 320ms; }
-    .hero-bg > div > div > *:nth-child(3) { animation-delay: 440ms; }
-    .hero-bg > div > div > *:nth-child(4) { animation-delay: 560ms; }
-    .hero-bg > div > div > *:nth-child(5) { animation-delay: 680ms; }
+    .hero-bg > div > div > *:nth-child(1) { animation-delay: 60ms; }
+    .hero-bg > div > div > *:nth-child(2) { animation-delay: 110ms; }
+    .hero-bg > div > div > *:nth-child(3) { animation-delay: 160ms; }
+    .hero-bg > div > div > *:nth-child(4) { animation-delay: 210ms; }
+    .hero-bg > div > div > *:nth-child(5) { animation-delay: 260ms; }
     @media (prefers-reduced-motion: reduce) {
       .hero-bg > div > div > * { animation: none !important; opacity: 1 !important; }
     }

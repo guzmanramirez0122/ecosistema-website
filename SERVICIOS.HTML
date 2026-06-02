@@ -478,18 +478,18 @@ footer{
   .btn-primary{justify-content:center}
 }
 
-/* Hero entrance stagger */
-@keyframes rg-hero-rise { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
+/* Hero entrance stagger — compact + snappy */
+@keyframes rg-hero-rise { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
 .srv-hero-inner > * {
   opacity: 0;
-  animation: rg-hero-rise 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: rg-hero-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
-.srv-hero-inner > *:nth-child(1) { animation-delay: 180ms; }
-.srv-hero-inner > *:nth-child(2) { animation-delay: 320ms; }
-.srv-hero-inner > *:nth-child(3) { animation-delay: 440ms; }
-.srv-hero-inner > *:nth-child(4) { animation-delay: 560ms; }
-.srv-hero-inner > *:nth-child(5) { animation-delay: 680ms; }
-.srv-hero-inner > *:nth-child(n+6) { animation-delay: 800ms; }
+.srv-hero-inner > *:nth-child(1) { animation-delay: 60ms; }
+.srv-hero-inner > *:nth-child(2) { animation-delay: 110ms; }
+.srv-hero-inner > *:nth-child(3) { animation-delay: 160ms; }
+.srv-hero-inner > *:nth-child(4) { animation-delay: 210ms; }
+.srv-hero-inner > *:nth-child(5) { animation-delay: 260ms; }
+.srv-hero-inner > *:nth-child(n+6) { animation-delay: 310ms; }
 @media (prefers-reduced-motion: reduce) {
   .srv-hero-inner > * { animation: none !important; opacity: 1 !important; }
 }

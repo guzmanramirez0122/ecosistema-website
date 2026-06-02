@@ -18,7 +18,7 @@
   s.id = '__page-loader-style';
   s.textContent =
     '@keyframes plPageFadeIn{from{opacity:0}to{opacity:1}}' +
-    'body{animation:plPageFadeIn .6s cubic-bezier(.22,.68,0,1) both;}' +
+    'body{animation:plPageFadeIn .18s ease-out both;}' +
     '@media (prefers-reduced-motion: reduce){body{animation:none;}}';
   document.head.appendChild(s);
 })();
