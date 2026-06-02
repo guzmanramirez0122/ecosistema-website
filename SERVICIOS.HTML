@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Servicios — Ramírez Guzmán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-2:#f8f5ef;
+  --ink:#0E0B00;
+  --ink-dim:#555555;
+  --ink-mute:#888888;
+  --line:rgba(154,162,192,0.18);
+  --line-2:rgba(154,162,192,0.32);
+  --card:#f8f5ef;
+  --silver:#9AA4C0;
+  --silver-2:#7884a4;
+  --met:linear-gradient(105deg,#eceef4 0%,#c4c8d6 18%,#8090b0 42%,#b8bdd0 62%,#e8eaf2 82%,#c0c4d4 100%);
+  --met-btn:linear-gradient(105deg,#eceef6 0%,#ccd0e0 16%,#8892b0 40%,#ccd0de 62%,#eceef4 80%,#c4c8d8 100%);
+  --sh:0 8px 32px -8px rgba(120,132,164,0.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;min-height:100vh;
+}
+body{
+  background:
+    radial-gradient(900px 500px at 50% 0%,rgba(154,162,192,0.07),transparent 70%),
+    radial-gradient(600px 400px at 5% 40%,rgba(154,162,192,0.04),transparent 70%),
+    var(--bg);
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background-image:radial-gradient(circle,rgba(154,162,192,0.09) 1px,transparent 1px);
+  background-size:28px 28px;pointer-events:none;z-index:0;
+}
+
+/* VIEWS */
+.view{display:none;animation:fadeUp .4s cubic-bezier(.2,.8,.2,1);position:relative;z-index:1}
+.view.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ──────────────────────────────
+   NAV
+────────────────────────────── */
+.nav-outer{max-width:1440px;margin:0 auto;padding:24px 32px 0;position:relative;z-index:100}
+nav.top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px 8px 10px;
+  border:1px solid var(--line-2);border-radius:999px;
+  background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);
+  box-shadow:0 2px 18px rgba(154,162,192,0.12);
+  gap:12px;
+}
+.logo-wrap{
+  display:flex;align-items:center;cursor:pointer;
+  flex-shrink:0;height:44px;
+}
+.logo-wrap img{height:100%;width:auto;display:block;max-width:260px;object-fit:contain}
+.logo-wrap .logo-text{
+  font-family:'Playfair Display',serif;font-size:17px;font-weight:700;
+  color:var(--ink);white-space:nowrap;letter-spacing:.01em;
+}
+.nav-links{display:flex;gap:1px;align-items:center;flex:1;justify-content:center}
+.nav-links a{
+  color:var(--ink-dim);text-decoration:none;font-size:12.5px;font-weight:500;
+  padding:7px 11px;border-radius:999px;transition:all .2s;white-space:nowrap;cursor:pointer;
+}
+.nav-links a:hover{color:var(--ink);background:rgba(154,162,192,0.08)}
+.nav-links a.active{
+  color:var(--ink);background:rgba(154,162,192,0.14);
+  box-shadow:0 0 0 1px rgba(154,162,192,0.28) inset;font-weight:600;
+}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;border-radius:999px;
+  background:var(--met-btn);
+  color:#1a2038;font-weight:600;font-size:13px;
+  border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;
+  box-shadow:var(--sh);transition:opacity .2s;font-family:'Inter',sans-serif;
+}
+.nav-cta:hover{opacity:.82}
+
+/* ──────────────────────────────
+   SERVICES HERO HEADER
+────────────────────────────── */
+.srv-hero-inner{text-align:center;padding-bottom:68px;padding-top:8px}
+.srv-hero-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:6px 16px 6px 6px;border-radius:999px;
+  background:rgba(154,162,192,0.08);border:1px solid rgba(154,162,192,0.26);
+  color:var(--silver-2);font-size:12px;font-weight:600;letter-spacing:.04em;
+  margin-bottom:28px;
+}
+.srv-hero-eyebrow .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--met-btn);display:inline-block;
+}
+.srv-hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,6vw,78px);font-weight:900;letter-spacing:-0.03em;
+  line-height:1.04;margin:0 0 22px;color:var(--ink);
+}
+.srv-hero-title em{
+  font-style:italic;
+  background:var(--met);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.srv-hero-sub{
+  color:var(--ink-dim);font-size:16.5px;line-height:1.72;
+  max-width:600px;margin:0 auto 40px;text-wrap:pretty;
+}
+.srv-stats{
+  display:inline-flex;align-items:center;gap:0;
+  padding:0;border-radius:22px;
+  background:#fff;border:1px solid var(--line-2);
+  box-shadow:0 4px 28px rgba(154,162,192,0.10);
+  overflow:hidden;margin-bottom:36px;
+}
+.srv-stat{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:18px 36px;
+}
+.srv-stat + .srv-stat{border-left:1px solid var(--line-2)}
+.srv-stat-n{
+  font-family:'Times New Roman',Times,serif;font-size:26px;font-weight:900;letter-spacing:-0.02em;
+  color:#0E0B00;line-height:1;
+}
+.srv-stat-l{font-size:11px;color:var(--ink-mute);font-weight:500;white-space:nowrap;margin-top:2px}
+.srv-hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 36px;border-radius:999px;background:var(--met-btn);
+  color:#1a2038;font-weight:700;font-size:14.5px;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;box-shadow:var(--sh);transition:opacity .2s,transform .2s;
+}
+.srv-hero-cta:hover{opacity:.84;transform:translateY(-2px)}
+.srv-hero-divider{
+  width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--line-2) 30%,var(--line-2) 70%,transparent);
+  margin-bottom:52px;
+}
+
+/* ──────────────────────────────
+   SERVICES GRID
+────────────────────────────── */
+.services-section{
+  max-width:1240px;margin:0 auto;padding:72px 32px 100px;
+  position:relative;z-index:1;
+}
+
+/* SERVICE CARDS GRID */
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.srv-card{
+  background:#fff;border:1px solid var(--line-2);border-radius:22px;
+  overflow:hidden;cursor:pointer;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,border-color .3s ease;
+  display:flex;flex-direction:column;
+}
+.srv-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(154,162,192,0.45);
+  box-shadow:0 20px 56px -14px rgba(120,132,164,0.22),0 0 0 1px rgba(154,162,192,0.2) inset;
+}
+.srv-card-head{
+  padding:28px 24px 20px;border-bottom:1px solid var(--line);
+  display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(154,162,192,0.06) 0%,rgba(255,255,255,0) 60%);
+}
+.srv-card-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(14,11,0,0.04);border:1px solid rgba(14,11,0,0.09);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--ink);
+}
+.srv-card-icon svg{width:22px;height:22px;display:block;flex-shrink:0}
+.srv-card-head-num{
+  font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-mute);
+  letter-spacing:.1em;padding-top:4px;
+}
+.srv-card-body{padding:20px 22px 20px;display:flex;flex-direction:column;flex:1}
+.srv-card h3{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;
+  letter-spacing:-0.01em;margin:0 0 10px;color:var(--ink);line-height:1.25;
+}
+.srv-card p{color:var(--ink-dim);font-size:13px;line-height:1.62;margin:0;flex:1;text-wrap:pretty}
+.srv-card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+}
+.srv-card-tag{
+  padding:4px 10px;border-radius:999px;
+  background:rgba(154,162,192,0.10);border:1px solid rgba(154,162,192,0.22);
+  color:var(--silver-2);font-size:11px;font-weight:600;
+}
+.srv-btn{
+  padding:8px 18px;border-radius:999px;
+  background:var(--met-btn);color:#1a2038;
+  border:none;font-weight:600;font-size:12px;cursor:pointer;
+  font-family:'Inter',sans-serif;box-shadow:var(--sh);transition:opacity .2s;
+}
+.srv-btn:hover{opacity:.82}
+
+/* ──────────────────────────────
+   DETAIL VIEWS
+────────────────────────────── */
+.detail-wrap{max-width:1240px;margin:0 auto;padding:0 32px 100px;position:relative;z-index:1}
+.detail-back{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:28px 0 40px;color:var(--ink-dim);font-size:13px;font-weight:500;cursor:pointer;
+  padding:8px 17px;border-radius:999px;border:1px solid var(--line-2);
+  background:rgba(255,255,255,0.85);transition:all .2s;font-family:'Inter',sans-serif;
+  box-shadow:0 2px 8px rgba(154,162,192,0.08);
+}
+.detail-back:hover{background:#fff;box-shadow:0 4px 16px rgba(154,162,192,0.16);color:var(--ink)}
+.detail-hero{
+  display:grid;grid-template-columns:1fr 390px;gap:48px;align-items:start;
+  padding-bottom:60px;border-bottom:1px solid var(--line);
+}
+.d-number{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-mute);
+  letter-spacing:.1em;display:block;margin-bottom:13px;
+}
+.detail-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(27px,4vw,50px);font-weight:900;letter-spacing:-0.02em;line-height:1.09;
+  margin-bottom:18px;color:var(--ink);
+}
+.detail-hero>div>p{color:var(--ink-dim);font-size:15.5px;line-height:1.7;margin-bottom:28px;text-wrap:pretty}
+.d-cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 28px;border-radius:999px;background:var(--met-btn);
+  color:#1a2038;font-weight:700;font-size:14px;
+  border:none;cursor:pointer;font-family:'Inter',sans-serif;
+  box-shadow:var(--sh);transition:opacity .2s;
+}
+.btn-primary:hover{opacity:.82}
+.btn-ghost{
+  padding:13px 22px;border-radius:999px;border:1px solid var(--line-2);
+  background:transparent;color:var(--ink-dim);font-weight:500;font-size:14px;
+  font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;
+}
+.btn-ghost:hover{background:rgba(154,162,192,0.07);color:var(--ink)}
+
+/* sidebar */
+.sidebar-card{
+  background:#fff;border:1px solid var(--line-2);border-radius:22px;
+  padding:28px;box-shadow:0 6px 28px rgba(154,162,192,0.09);position:relative;overflow:hidden;
+}
+.sidebar-card::before{
+  content:"";position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(154,162,192,0.12),transparent 70%);
+  filter:blur(16px);pointer-events:none;
+}
+.sidebar-card h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:18px;color:var(--ink);position:relative}
+.check-list{display:flex;flex-direction:column;gap:11px;position:relative}
+.check-item{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:var(--ink-dim);line-height:1.5}
+.chk{
+  width:19px;height:19px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  background:rgba(154,162,192,0.13);border:1px solid rgba(154,162,192,0.28);
+  display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--silver-2);
+}
+
+/* detail content */
+.detail-content{padding:56px 0}
+.detail-section{margin-bottom:52px}
+.detail-section h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,2.8vw,30px);font-weight:700;letter-spacing:-0.02em;
+  margin-bottom:22px;color:var(--ink);
+}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.benefit-card{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
+  box-shadow:0 2px 10px rgba(154,162,192,0.06);
+}
+.benefit-card h4{font-size:14.5px;font-weight:700;margin-bottom:7px;color:var(--ink)}
+.benefit-card p{font-size:13px;color:var(--ink-dim);line-height:1.6}
+.process-steps{display:flex;flex-direction:column}
+.step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step-num{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;
+  background:rgba(154,162,192,0.11);border:1px solid rgba(154,162,192,0.24);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--silver-2);font-weight:700;
+}
+.step-content h4{font-size:14.5px;font-weight:700;margin-bottom:5px;color:var(--ink)}
+.step-content p{font-size:13px;color:var(--ink-dim);line-height:1.55}
+
+/* FORM */
+.form-section{
+  background:#fff;border:1px solid var(--line-2);border-radius:26px;
+  padding:42px;box-shadow:0 8px 32px rgba(154,162,192,0.08);position:relative;overflow:hidden;
+}
+.form-section::before{
+  content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(154,162,192,0.10),transparent 70%);
+  filter:blur(26px);pointer-events:none;
+}
+.form-section h2{
+  font-family:'Playfair Display',serif;font-size:24px;font-weight:700;
+  letter-spacing:-0.02em;margin-bottom:7px;color:var(--ink);position:relative;
+}
+.form-section>p{color:var(--ink-dim);font-size:14px;margin-bottom:26px;position:relative}
+form{display:flex;flex-direction:column;gap:14px;position:relative}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:600;color:var(--ink-dim)}
+.field input,.field textarea,.field select{
+  background:#fff;border:1px solid rgba(154,162,192,0.32);
+  border-radius:10px;padding:11px 15px;color:var(--ink);
+  font-family:'Inter',sans-serif;font-size:14px;outline:none;
+  transition:border-color .2s,box-shadow .2s;resize:none;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-mute)}
+.field select option{background:#fff;color:var(--ink)}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--silver);box-shadow:0 0 0 3px rgba(154,162,192,0.09);
+}
+.field textarea{height:104px}
+.form-submit{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:13px 34px;border-radius:999px;background:var(--met-btn);
+  color:#1a2038;font-weight:700;font-size:14px;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;box-shadow:var(--sh);transition:opacity .2s;align-self:flex-start;
+}
+.form-submit:hover{opacity:.82}
+.success-msg{display:none;text-align:center;padding:48px 24px;color:#2B8A3E;font-size:15px;font-weight:600;line-height:1.6;}
+.success-msg.is-visible{display:block;animation:msgAppear .5s cubic-bezier(.22,.68,0,1) both;}
+.success-msg svg{width:88px;height:88px;margin:0 auto 22px;display:block;animation:checkPop .6s cubic-bezier(.34,1.56,.64,1) both;}
+.success-msg svg circle{stroke-dasharray:151;stroke-dashoffset:151;animation:drawCircle .6s ease-out .05s forwards;}
+.success-msg svg path{stroke-dasharray:40;stroke-dashoffset:40;animation:drawCheck .35s ease-out .5s forwards;}
+.success-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#2B8A3E;margin-bottom:8px;letter-spacing:-.01em;animation:textRise .5s ease-out .65s both;}
+.success-sub{font-size:14.5px;color:#51CF66;font-weight:500;line-height:1.6;animation:textRise .5s ease-out .8s both;}
+@keyframes msgAppear{from{opacity:0}to{opacity:1}}
+@keyframes checkPop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes drawCircle{to{stroke-dashoffset:0}}
+@keyframes drawCheck{to{stroke-dashoffset:0}}
+@keyframes textRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* PRICE TAG */
+.price-tag{
+  display:inline-flex;align-items:center;gap:18px;
+  padding:14px 24px;border-radius:18px;
+  background:#fff;border:1px solid var(--line-2);
+  box-shadow:0 4px 18px rgba(154,162,192,0.09);
+  margin-bottom:24px;
+}
+.price-amount{
+  font-family:'Times New Roman',Times,serif;font-size:28px;font-weight:900;
+  letter-spacing:-0.02em;line-height:1;color:#0E0B00;
+}
+.price-meta{display:flex;flex-direction:column;gap:2px}
+.price-meta span{font-size:12.5px;color:var(--ink-mute);font-weight:500}
+.price-meta strong{font-size:13.5px;color:var(--ink-dim);font-weight:600}
+
+/* PDF ACTIONS */
+.pdf-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.pdf-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;text-decoration:none;
+  border:1px solid var(--line-2);background:#fff;color:var(--ink);
+  font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;
+  transition:all .2s;box-shadow:0 2px 10px rgba(154,162,192,0.08);
+}
+.pdf-btn:hover{border-color:var(--silver);box-shadow:0 4px 16px rgba(154,162,192,0.18);color:var(--ink)}
+.pdf-btn svg{width:16px;height:16px;flex-shrink:0}
+.pdf-btn.dl{background:var(--met-btn);color:#1a2038;border-color:transparent;box-shadow:var(--sh)}
+.pdf-btn.dl:hover{opacity:.84}
+
+/* RADIO / CHECKBOX OPTIONS */
+.radio-group,.check-opt-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.radio-opt,.check-opt{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;border-radius:999px;
+  border:1px solid var(--line-2);background:#fff;
+  font-size:13.5px;color:var(--ink-dim);cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s;
+  font-family:'Inter',sans-serif;
+}
+.radio-opt input,.check-opt input{width:14px;height:14px;accent-color:var(--silver-2);cursor:pointer;flex-shrink:0}
+.radio-opt:has(input:checked),.check-opt:has(input:checked){
+  border-color:var(--silver);background:rgba(154,162,192,0.07);color:var(--ink);
+}
+.check-opt{border-radius:12px}
+
+/* WHATSAPP CTA */
+.wa-cta-box{
+  background:#fff;border:1px solid var(--line-2);border-radius:26px;
+  padding:52px 42px;box-shadow:0 8px 32px rgba(154,162,192,0.08);
+  text-align:center;position:relative;overflow:hidden;
+}
+.wa-cta-box::before{
+  content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(37,211,102,0.06),transparent 70%);
+  filter:blur(26px);pointer-events:none;
+}
+.wa-cta-box h2{
+  font-family:'Playfair Display',serif;font-size:26px;font-weight:700;
+  letter-spacing:-0.02em;margin-bottom:12px;color:var(--ink);position:relative;
+}
+.wa-cta-box p{color:var(--ink-dim);font-size:15px;line-height:1.7;margin-bottom:32px;max-width:460px;margin-left:auto;margin-right:auto;position:relative}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:15px 38px;border-radius:999px;text-decoration:none;
+  background:#25D366;color:#fff;font-weight:700;font-size:15px;
+  font-family:'Inter',sans-serif;
+  box-shadow:0 8px 28px rgba(37,211,102,0.30);
+  transition:opacity .2s,transform .2s;position:relative;
+}
+.wa-btn:hover{opacity:.88;transform:translateY(-2px)}
+.wa-btn svg{width:22px;height:22px;flex-shrink:0}
+
+/* MODAL */
+#modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(14,11,0,0.52);backdrop-filter:blur(8px);
+  z-index:1000;overflow-y:auto;padding:40px 16px;
+}
+.modal-box{
+  max-width:490px;margin:0 auto;background:#fff;
+  border:1px solid var(--line-2);border-radius:22px;padding:38px;position:relative;
+  box-shadow:0 36px 90px rgba(154,162,192,0.22);
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;background:var(--bg-2);
+  border:1px solid var(--line);border-radius:50%;width:32px;height:32px;
+  color:var(--ink-dim);cursor:pointer;font-size:14px;
+  display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.modal-close:hover{background:rgba(154,162,192,0.12)}
+
+/* FOOTER */
+footer{
+  padding:36px 32px 56px;text-align:center;color:var(--ink-mute);font-size:12px;
+  border-top:1px solid var(--line);position:relative;z-index:1;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .nav-links a{font-size:11.5px;padding:6px 8px}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:980px){
+  .nav-links{display:none}
+  .detail-hero{grid-template-columns:1fr}
+  .sidebar-card{display:none}
+  .benefits-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-outer{padding:16px 12px 0}
+  nav.top{padding:7px 8px 7px 14px}
+  .nav-cta{padding:8px 13px;font-size:12px}
+  .logo-wrap img{max-width:160px}
+  .services-section{padding:44px 14px 70px}
+  .srv-hero-inner{padding-bottom:44px}
+  .srv-hero-title{font-size:clamp(28px,9vw,46px)}
+  .srv-hero-sub{font-size:15px}
+  .srv-stats{flex-direction:column;gap:0;border-radius:18px;width:100%}
+  .srv-stat{padding:14px 22px;width:100%;flex-direction:row;justify-content:space-between;align-items:center;gap:12px}
+  .srv-stat + .srv-stat{border-left:none;border-top:1px solid var(--line-2)}
+  .srv-stat-n{font-size:22px}
+  .srv-hero-cta{width:100%;justify-content:center;font-size:14px;padding:13px 22px}
+  .srv-grid{grid-template-columns:1fr;gap:14px}
+  .detail-wrap{padding:0 14px 70px}
+  .form-section{padding:24px 18px}
+  .form-row{grid-template-columns:1fr}
+  .d-cta-row{flex-direction:column}
+  .btn-primary{justify-content:center}
+}
+
+/* Hero entrance stagger */
+@keyframes rg-hero-rise { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
+.srv-hero-inner > * {
+  opacity: 0;
+  animation: rg-hero-rise 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.srv-hero-inner > *:nth-child(1) { animation-delay: 180ms; }
+.srv-hero-inner > *:nth-child(2) { animation-delay: 320ms; }
+.srv-hero-inner > *:nth-child(3) { animation-delay: 440ms; }
+.srv-hero-inner > *:nth-child(4) { animation-delay: 560ms; }
+.srv-hero-inner > *:nth-child(5) { animation-delay: 680ms; }
+.srv-hero-inner > *:nth-child(n+6) { animation-delay: 800ms; }
+@media (prefers-reduced-motion: reduce) {
+  .srv-hero-inner > * { animation: none !important; opacity: 1 !important; }
+}
+</style>
+<script src="page-loader.js"></script>
+</head>
+<body>
+
+<!-- ════════════════════════════
+     VIEW: HOME
+════════════════════════════ -->
+<div class="view active" id="view-home">
+
+  <!-- NAV -->
+  <div class="nav-outer">
+    <nav class="top">
+      <div class="logo-wrap" onclick="showView('home')" role="button" aria-label="Inicio">
+        <img src="LOGO.png" alt="Ramírez Guzmán"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+        <span class="logo-text" style="display:none">Ramírez Guzmán</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.Home_(standalone).html">Inicio</a>
+        <a class="active" onclick="showView('home');scrollToServices()">Servicios</a>
+        <a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a>
+        <a href="index.Home_(standalone).html#testimonials">Testimonios</a>
+        <a href="index.Home_(standalone).html#redes">Redes</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="blog.html">Blog</a>
+      </div>
+      <button class="nav-cta" onclick="showModal()">Agendar →</button>
+    </nav>
+  </div>
+
+  <!-- SERVICES HERO -->
+  <section class="services-section" id="services-anchor">
+    <div class="srv-hero-inner">
+      <div class="srv-hero-eyebrow">
+        <span class="dot"></span>
+        Especialistas en Fiscal y Legal
+      </div>
+      <h1 class="srv-hero-title">Cada servicio,<br/><em>diseñado para protegerte.</em></h1>
+      <p class="srv-hero-sub">Asesoría fiscal y legal de alto nivel para empresas y personas que quieren pagar lo justo, proteger su patrimonio y crecer con certeza jurídica.</p>
+      <div class="srv-stats">
+        <div class="srv-stat">
+          <span class="srv-stat-n">+15</span>
+          <span class="srv-stat-l">años de experiencia</span>
+        </div>
+        <div class="srv-stat">
+          <span class="srv-stat-n">8</span>
+          <span class="srv-stat-l">áreas especializadas</span>
+        </div>
+        <div class="srv-stat">
+          <span class="srv-stat-n">96%</span>
+          <span class="srv-stat-l">clientes satisfechos</span>
+        </div>
+      </div>
+      <br/>
+      <button class="srv-hero-cta" onclick="showModal()">Agendar sesión →</button>
+    </div>
+    <div class="srv-hero-divider"></div>
+
+    <div class="srv-grid">
+
+      <div class="srv-card" onclick="showService('asesoria')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="3" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/><line x1="3" y1="7" x2="21" y2="7"/><path d="M3 7l3 7a3 3 0 006 0l3-7"/><path d="M12 7l3 7a3 3 0 006 0l3-7"/></svg></div>
+          <span class="srv-card-head-num">01 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Asesoría Fiscal y Legal</h3>
+          <p>Sesión privada de 60 minutos con César Ramírez para resolver tus dudas y problemas fiscales de forma directa y personalizada.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Consultoría</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('asesoria')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('planeacion')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="3,18 8,11 13,14 20,5"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div>
+          <span class="srv-card-head-num">02 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Planeación Fiscal Integral</h3>
+          <p>Diagnóstico fiscal, legal y financiero de tu empresa para proponer las mejores opciones de tributación y aprovechar todos los beneficios fiscales aplicables.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Estrategia</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('planeacion')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('cumplimiento')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><polyline points="8.5,11 10.5,13 14,9"/></svg></div>
+          <span class="srv-card-head-num">03 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Revisión de Cumplimiento Fiscal</h3>
+          <p>Apoyamos tu departamento contable interno con asesoría estratégica y vigilancia permanente del correcto cumplimiento de todas las obligaciones fiscales.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Auditoría</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('cumplimiento')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('inmobiliario')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="9" width="11" height="12"/><path d="M13 14h9v7H13"/><path d="M6 13v2M9 13v2M6 17v1"/><path d="M2 9l5-6h9l4 6"/></svg></div>
+          <span class="srv-card-head-num">04 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Estructuración de Proyectos Inmobiliarios</h3>
+          <p>Diseñamos las mejores alternativas jurídicas y fiscales para blindar el proyecto, proteger el patrimonio y minimizar el costo fiscal desde el inicio hasta su conclusión.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Inmobiliario</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('inmobiliario')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('contabilidad')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></div>
+          <span class="srv-card-head-num">05 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Contabilidad Integral</h3>
+          <p>Nos encargamos de tu contabilidad y declaración de contribuciones de manera integral para que tú solo te dediques a dirigir tu empresa.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Contabilidad</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('contabilidad')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('defensa')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l8 3.5V11c0 5.25-3.5 9.75-8 11.5C8 20.75 4 16.25 4 11V5.5L12 2z"/><polyline points="9,12 11,14 15.5,9.5"/></svg></div>
+          <span class="srv-card-head-num">06 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Defensa Fiscal</h3>
+          <p>Te defendemos y representamos ante SAT, IMSS, INFONAVIT, Secretarías de Finanzas y Tesorerías en auditorías, requerimientos y procedimientos contenciosos.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Legal</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('defensa')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('contratos')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg></div>
+          <span class="srv-card-head-num">07 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Contratos y Documentación Legal</h3>
+          <p>Elaboración de contratos corporativos y papelería societaria como libros sociales y actas de asamblea con respaldo jurídico experto.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Corporativo</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('contratos')">Solicitar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="srv-card" onclick="showService('cursos')">
+        <div class="srv-card-head">
+          <div class="srv-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 2,8 12,14 22,8"/><path d="M6 11.5v5.5c2 2 8 2 12 0v-5.5"/><line x1="22" y1="8" x2="22" y2="13"/></svg></div>
+          <span class="srv-card-head-num">08 / 08</span>
+        </div>
+        <div class="srv-card-body">
+          <h3>Cursos y Capacitación</h3>
+          <p>Programas de formación fiscal y legal para empresarios, contadores y abogados. Actualización en normativa vigente y estrategia tributaria con César Ramírez.</p>
+          <div class="srv-card-footer">
+            <span class="srv-card-tag">Formación</span>
+            <button class="srv-btn" onclick="event.stopPropagation();showService('cursos')">Inscribirse</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales. Todos los derechos reservados.</footer>
+</div><!-- /view-home -->
+
+
+<!-- ════════════════════════════
+     HELPER: NAV FRAGMENT
+     (repeated en cada vista)
+════════════════════════════ -->
+
+<!-- VIEW: 01 ASESORÍA FISCAL -->
+<div class="view" id="view-asesoria">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 01 / 08. CONSULTORÍA</span>
+        <h1>Asesoría Fiscal y Legal</h1>
+        <p>Sesión privada de 60 minutos con César Ramírez para resolver tus dudas y problemas fiscales de forma directa, personalizada y con resultados concretos desde el primer encuentro.</p>
+        <div class="price-tag">
+          <span class="price-amount">$5,000</span>
+          <div class="price-meta">
+            <strong>MXN · IVA incluido</strong>
+            <span>Duración: 60 minutos</span>
+          </div>
+        </div>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('asesoria')">Solicitar asesoría →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>60 minutos con César Ramírez</div>
+          <div class="check-item"><div class="chk">✓</div>Análisis de tu situación fiscal específica</div>
+          <div class="check-item"><div class="chk">✓</div>Respuestas claras y accionables</div>
+          <div class="check-item"><div class="chk">✓</div>Orientación legal aplicable a tu caso</div>
+          <div class="check-item"><div class="chk">✓</div>Resumen escrito de conclusiones</div>
+          <div class="check-item"><div class="chk">✓</div>Recomendaciones de próximos pasos</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Para quién es este servicio</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Empresarios y directivos</h4><p>Que enfrentan decisiones fiscales importantes y necesitan orientación experta antes de actuar.</p></div>
+          <div class="benefit-card"><h4>Personas físicas con actividad empresarial</h4><p>Con dudas sobre sus obligaciones tributarias o que quieren optimizar su carga fiscal personal.</p></div>
+          <div class="benefit-card"><h4>Inversionistas</h4><p>Que necesitan claridad fiscal antes de estructurar una inversión o proyecto de negocio.</p></div>
+          <div class="benefit-card"><h4>Contadores y abogados</h4><p>Que requieren una segunda opinión experta en temas fiscales complejos o controversiales.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Cómo funciona</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Agenda tu sesión</h4><p>Llena el formulario con tu consulta principal. Confirmaremos en menos de 24 horas.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Preparación previa</h4><p>Te enviamos instrucciones para aprovechar al máximo los 60 minutos de sesión.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Sesión privada</h4><p>60 minutos en directo con César Ramírez. Presencial o videollamada según tu preferencia.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Resumen ejecutivo</h4><p>Recibirás un documento con conclusiones de la sesión y los pasos recomendados a seguir.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-asesoria">
+        <h2>Solicitar asesoría</h2>
+        <p>Cuéntanos tu consulta principal y agendaremos tu sesión a la brevedad.</p>
+        <form onsubmit="handleForm(event,'asesoria')">
+          <div class="form-row">
+            <div class="field"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre" required/></div>
+            <div class="field"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Teléfono</label><input type="tel" placeholder="+52 000 000 0000"/></div>
+            <div class="field"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa"/></div>
+          </div>
+          <div class="field"><label>Tema principal de consulta *</label><textarea placeholder="Describe brevemente el tema o problema fiscal que necesitas resolver." required></textarea></div>
+          <button type="submit" class="form-submit">Solicitar sesión →</button>
+          <div class="success-msg" id="success-asesoria"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te contactaremos en menos de 24 horas.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 02 PLANEACIÓN FISCAL -->
+<div class="view" id="view-planeacion">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 02 / 08. ESTRATEGIA</span>
+        <h1>Planeación Fiscal Integral</h1>
+        <p>Realizamos un diagnóstico fiscal, legal y financiero completo a tu empresa y proponemos las mejores opciones para que tributes eficientemente, aprovechando todos los beneficios fiscales aplicables.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('planeacion')">Iniciar planeación →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+        <div class="pdf-actions">
+          <a href="PDF/Brochure PFI 2026 2.pdf" target="_blank" class="pdf-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver presentación</a>
+          <a href="PDF/Brochure PFI 2026 2.pdf" download class="pdf-btn dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar PDF</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Diagnóstico fiscal, legal y financiero</div>
+          <div class="check-item"><div class="chk">✓</div>Propuesta de estructura fiscal óptima</div>
+          <div class="check-item"><div class="chk">✓</div>Identificación de beneficios fiscales aplicables</div>
+          <div class="check-item"><div class="chk">✓</div>Comparativa de alternativas de tributación</div>
+          <div class="check-item"><div class="chk">✓</div>Estrategia de implementación paso a paso</div>
+          <div class="check-item"><div class="chk">✓</div>Seguimiento durante el primer trimestre</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Beneficios clave</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Reducción legal de impuestos</h4><p>Identificamos todas las deducciones y beneficios fiscales aplicables para reducir tu carga tributaria dentro del marco legal.</p></div>
+          <div class="benefit-card"><h4>Certeza jurídica</h4><p>Cada decisión fiscal está respaldada por un análisis legal riguroso que protege a tu empresa ante cualquier revisión de autoridades.</p></div>
+          <div class="benefit-card"><h4>Optimización del flujo de efectivo</h4><p>Estructuramos el calendario fiscal para mejorar tu liquidez y eliminar pagos innecesarios o anticipados.</p></div>
+          <div class="benefit-card"><h4>Visión de largo plazo</h4><p>Una estrategia sostenible que se adapta al crecimiento de tu empresa y a los cambios en la legislación fiscal.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Metodología</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Diagnóstico integral</h4><p>Revisamos tu situación fiscal, contable, legal y financiera actual para identificar oportunidades y riesgos.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Análisis de alternativas</h4><p>Comparamos distintas estructuras fiscales y presentamos las opciones con su impacto real en impuestos y costos.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Propuesta personalizada</h4><p>Entregamos un plan adaptado a tu actividad, tamaño y objetivos de crecimiento.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Implementación y seguimiento</h4><p>Acompañamos la puesta en marcha y monitoreamos el correcto funcionamiento durante el primer trimestre.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-planeacion">
+        <h2>Solicitar propuesta de planeación</h2>
+        <p>Cuéntanos sobre tu empresa y diseñamos una propuesta de planeación fiscal integral personalizada.</p>
+        <form onsubmit="handleForm(event,'planeacion')">
+          <div class="form-row">
+            <div class="field"><label>Nombre completo *</label><input type="text" placeholder="Escribe tu nombre completo" required/></div>
+            <div class="field"><label>WhatsApp *</label><input type="tel" placeholder="+52 492 1561111" required/></div>
+          </div>
+          <div class="field"><label>Régimen Fiscal *</label>
+            <select required>
+              <option value="" disabled selected>Seleccione un régimen</option>
+              <option>601 - General de Ley Personas Morales</option>
+              <option>603 - Personas Morales con Fines no Lucrativos</option>
+              <option>605 - Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
+              <option>606 - Arrendamiento</option>
+              <option>607 - Régimen de Enajenación o Adquisición de Bienes</option>
+              <option>608 - Demás ingresos</option>
+              <option>610 - Residentes en el Extranjero sin Establecimiento Permanente en México</option>
+              <option>611 - Ingresos por Dividendos (socios y accionistas)</option>
+              <option>612 - Personas Físicas con Actividades Empresariales y Profesionales</option>
+              <option>614 - Ingresos por intereses</option>
+              <option>615 - Régimen de los ingresos por obtención de premios</option>
+              <option>616 - Sin obligaciones fiscales</option>
+              <option>620 - Sociedades Cooperativas de Producción</option>
+              <option>621 - Incorporación Fiscal</option>
+              <option>622 - Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
+              <option>623 - Opcional para Grupos de Sociedades</option>
+              <option>624 - Coordinados</option>
+              <option>625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+              <option>626 - Régimen Simplificado de Confianza</option>
+            </select>
+          </div>
+          <div class="field"><label>Giro de la empresa</label><input type="text" placeholder="Ej: desarrollo de software, comercio, etc."/></div>
+          <div class="field"><label>Facturación estimada 2026</label><input type="text" placeholder="Ej: 2,000,000.00"/></div>
+          <div class="field"><label>¿Tiene departamento contable o contador interno en la empresa?</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="contador-plan" value="si"/> Sí</label>
+              <label class="radio-opt"><input type="radio" name="contador-plan" value="no"/> No</label>
+            </div>
+          </div>
+          <div class="field"><label>A grandes rasgos, ¿qué es lo que busca con este servicio?</label><textarea placeholder="Escribe aquí tu consulta..."></textarea></div>
+          <button type="submit" class="form-submit">Solicitar propuesta →</button>
+          <div class="success-msg" id="success-planeacion"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te contactaremos en 24 horas para agendar tu diagnóstico.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 03 CUMPLIMIENTO -->
+<div class="view" id="view-cumplimiento">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 03 / 08. AUDITORÍA</span>
+        <h1>Revisión de Cumplimiento Fiscal</h1>
+        <p>Si ya cuentas con departamento contable, los apoyamos con asesoría estratégica y vigilamos que estén cumpliendo de manera correcta con todas las obligaciones fiscales.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('cumplimiento')">Solicitar revisión →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Auditoría interna de cumplimiento fiscal</div>
+          <div class="check-item"><div class="chk">✓</div>Supervisión del equipo contable interno</div>
+          <div class="check-item"><div class="chk">✓</div>Revisión de declaraciones periódicas</div>
+          <div class="check-item"><div class="chk">✓</div>Alertas de vencimientos y obligaciones</div>
+          <div class="check-item"><div class="chk">✓</div>Reportes mensuales de estatus</div>
+          <div class="check-item"><div class="chk">✓</div>Consultas ilimitadas durante el período</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Para quién es este servicio</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Empresas medianas y grandes</h4><p>Con departamento contable propio que requieren supervisión experta externa para garantizar el cumplimiento fiscal total.</p></div>
+          <div class="benefit-card"><h4>Directivos sin perfil fiscal</h4><p>Que necesitan certeza de que su equipo contable opera correctamente sin revisar cada detalle personalmente.</p></div>
+          <div class="benefit-card"><h4>Empresas en crecimiento</h4><p>Cuyas obligaciones fiscales se han complejizado y necesitan respaldo estratégico externo de alto nivel.</p></div>
+          <div class="benefit-card"><h4>Grupos empresariales</h4><p>Con múltiples entidades que requieren supervisión consolidada del cumplimiento de todo el grupo.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Proceso de revisión</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Diagnóstico inicial</h4><p>Evaluamos el estado actual de cumplimiento y detectamos rezagos, riesgos o inconsistencias existentes.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Plan de corrección</h4><p>Proponemos un plan para corregir cualquier incumplimiento y optimizar los procesos del departamento contable.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Supervisión continua</h4><p>Monitoreamos el cumplimiento de obligaciones fiscales de forma periódica con reportes ejecutivos mensuales.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Soporte estratégico</h4><p>Disponibles para consultas del equipo contable y para resolver situaciones complejas que surjan.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-cumplimiento">
+        <h2>Solicitar cotización de revisión</h2>
+        <p>Cuéntanos sobre tu empresa y evaluamos cómo apoyar a tu equipo contable.</p>
+        <form onsubmit="handleForm(event,'cumplimiento')">
+          <div class="form-row">
+            <div class="field"><label>Nombre *</label><input type="text" placeholder="Tu nombre completo" required/></div>
+            <div class="field"><label>WhatsApp *</label><input type="tel" placeholder="+52 492 1561111" required/></div>
+          </div>
+          <div class="field"><label>Régimen Fiscal *</label>
+            <select required>
+              <option value="" disabled selected>Seleccione un régimen</option>
+              <option>601 - General de Ley Personas Morales</option>
+              <option>603 - Personas Morales con Fines no Lucrativos</option>
+              <option>605 - Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
+              <option>606 - Arrendamiento</option>
+              <option>607 - Régimen de Enajenación o Adquisición de Bienes</option>
+              <option>608 - Demás ingresos</option>
+              <option>610 - Residentes en el Extranjero sin Establecimiento Permanente en México</option>
+              <option>611 - Ingresos por Dividendos (socios y accionistas)</option>
+              <option>612 - Personas Físicas con Actividades Empresariales y Profesionales</option>
+              <option>614 - Ingresos por intereses</option>
+              <option>615 - Régimen de los ingresos por obtención de premios</option>
+              <option>616 - Sin obligaciones fiscales</option>
+              <option>620 - Sociedades Cooperativas de Producción</option>
+              <option>621 - Incorporación Fiscal</option>
+              <option>622 - Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
+              <option>623 - Opcional para Grupos de Sociedades</option>
+              <option>624 - Coordinados</option>
+              <option>625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+              <option>626 - Régimen Simplificado de Confianza</option>
+            </select>
+          </div>
+          <div class="field"><label>Giro de la empresa</label><input type="text" placeholder="Ej: comercio, servicios, manufactura"/></div>
+          <div class="form-row">
+            <div class="field"><label>CFDI de ingresos aproximados al mes</label><input type="text" placeholder="Ej: 50"/></div>
+            <div class="field"><label>CFDI de egresos aproximados al mes</label><input type="text" placeholder="Ej: 30"/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Años en operación</label><input type="text" placeholder="Ej: 5"/></div>
+            <div class="field"><label>Número de trabajadores</label><input type="text" placeholder="Ej: 12"/></div>
+          </div>
+          <div class="field"><label>¿Tiene operaciones con clientes o proveedores extranjeros?</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="ext-cum" value="si"/> Sí</label>
+              <label class="radio-opt"><input type="radio" name="ext-cum" value="no"/> No</label>
+            </div>
+          </div>
+          <div class="field"><label>¿Tiene o ha tenido auditorías con autoridades fiscales?</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="aud-cum" value="si"/> Sí</label>
+              <label class="radio-opt"><input type="radio" name="aud-cum" value="no"/> No</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Facturación estimada 2026</label><input type="text" placeholder="Ej: 2,000,000.00"/></div>
+            <div class="field"><label>Estado y municipio del domicilio fiscal</label><input type="text" placeholder="Ej: Zacatecas, Zacatecas"/></div>
+          </div>
+          <div class="field"><label>Deseo que:</label>
+            <div class="check-opt-group">
+              <label class="check-opt"><input type="checkbox"/> Lleven mi contabilidad completa mensualmente</label>
+              <label class="check-opt"><input type="checkbox"/> Revisen y asesoren mensualmente a mi contador interno</label>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">Solicitar cotización →</button>
+          <div class="success-msg" id="success-cumplimiento"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te contactaremos en 24 horas.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 04 INMOBILIARIO -->
+<div class="view" id="view-inmobiliario">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 04 / 08. INMOBILIARIO</span>
+        <h1>Estructuración de Proyectos Inmobiliarios</h1>
+        <p>Diseñamos y comparamos las mejores alternativas jurídicas y fiscales para blindar el proyecto, proteger el patrimonio y minimizar el costo fiscal desde el inicio hasta su conclusión.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('inmobiliario')">Estructurar mi proyecto →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+        <div class="pdf-actions">
+          <a href="PDF/Inmobiliario.pdf" target="_blank" class="pdf-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver presentación</a>
+          <a href="PDF/Inmobiliario.pdf" download class="pdf-btn dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar PDF</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Análisis de alternativas jurídicas y fiscales</div>
+          <div class="check-item"><div class="chk">✓</div>Blindaje patrimonial del proyecto</div>
+          <div class="check-item"><div class="chk">✓</div>Estructura fiscal optimizada desde el inicio</div>
+          <div class="check-item"><div class="chk">✓</div>Minimización del costo fiscal total</div>
+          <div class="check-item"><div class="chk">✓</div>Acompañamiento hasta la conclusión</div>
+          <div class="check-item"><div class="chk">✓</div>Documentación jurídica completa</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Ventajas de estructurar correctamente</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Protección patrimonial</h4><p>Separamos el riesgo del proyecto de tu patrimonio personal mediante estructuras jurídicas adecuadas.</p></div>
+          <div class="benefit-card"><h4>Ahorro fiscal significativo</h4><p>Una estructura correcta desde el inicio puede representar ahorros importantes en la carga fiscal total del proyecto.</p></div>
+          <div class="benefit-card"><h4>Certeza para inversionistas</h4><p>Una estructura transparente y bien documentada facilita la entrada de socios e inversionistas al proyecto.</p></div>
+          <div class="benefit-card"><h4>Menor riesgo legal</h4><p>Reducimos la exposición a contingencias fiscales y litigios durante y después del desarrollo del proyecto.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Fases del servicio</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Análisis del proyecto</h4><p>Revisamos tipo de proyecto, participantes, fuentes de financiamiento y objetivos del desarrollador.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Propuesta de estructuras</h4><p>Presentamos distintas alternativas jurídicas y fiscales con análisis comparativo de costos y beneficios.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Implementación legal</h4><p>Constituimos las entidades necesarias, elaboramos contratos y documentamos la estructura aprobada.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Seguimiento del proyecto</h4><p>Monitoreamos el cumplimiento fiscal durante el desarrollo y ajustamos la estrategia ante cualquier cambio.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-inmobiliario">
+        <h2>Solicitar propuesta inmobiliaria</h2>
+        <p>Cuéntanos sobre tu proyecto y diseñamos la mejor estructura jurídica y fiscal para protegerlo.</p>
+        <form onsubmit="handleForm(event,'inmobiliario')">
+          <div class="form-row">
+            <div class="field"><label>Nombre *</label><input type="text" placeholder="Tu nombre completo" required/></div>
+            <div class="field"><label>WhatsApp *</label><input type="tel" placeholder="+52 492 1561111" required/></div>
+          </div>
+          <div class="field"><label>Breve descripción del proyecto a desarrollar</label><textarea placeholder="Describe el tipo de proyecto, uso de suelo, alcance estimado..."></textarea></div>
+          <div class="field"><label>Estado y municipio donde se desarrollará</label><input type="text" placeholder="Ej: Jalisco, Guadalajara"/></div>
+          <div class="field"><label>¿Cuántos participantes y de qué tipo son?</label><input type="text" placeholder="Ej: 3 socios personas morales, 1 persona física"/></div>
+          <div class="form-row">
+            <div class="field"><label>Monto estimado del proyecto (MXN)</label><input type="text" placeholder="Ej: 15,000,000.00"/></div>
+            <div class="field"><label>Duración del proyecto</label><input type="text" placeholder="Ej: 18 meses"/></div>
+          </div>
+          <div class="field"><label>Fecha estimada de inicio del proyecto</label><input type="text" placeholder="Ej: Julio 2026"/></div>
+          <button type="submit" class="form-submit">Solicitar propuesta →</button>
+          <div class="success-msg" id="success-inmobiliario"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te contactaremos en 24 horas para analizar tu proyecto.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 05 CONTABILIDAD -->
+<div class="view" id="view-contabilidad">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 05 / 08. CONTABILIDAD</span>
+        <h1>Contabilidad Integral</h1>
+        <p>Nos encargamos de tu contabilidad y declaración de contribuciones de manera integral para que tú solo te dediques a dirigir tu empresa.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('contabilidad')">Contratar servicio →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Registro contable mensual completo</div>
+          <div class="check-item"><div class="chk">✓</div>Declaraciones provisionales y anuales</div>
+          <div class="check-item"><div class="chk">✓</div>CFDI y facturación electrónica</div>
+          <div class="check-item"><div class="chk">✓</div>Nómina, IMSS e INFONAVIT</div>
+          <div class="check-item"><div class="chk">✓</div>Estados financieros mensuales</div>
+          <div class="check-item"><div class="chk">✓</div>Asesoría fiscal incluida sin costo adicional</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Beneficios de nuestra contabilidad</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Cero preocupaciones fiscales</h4><p>Nos encargamos de cada declaración, aviso y obligación para que nunca tengas multas ni recargos por incumplimiento.</p></div>
+          <div class="benefit-card"><h4>Información financiera en tiempo real</h4><p>Recibes estados financieros mensuales claros para tomar decisiones informadas sobre tu negocio.</p></div>
+          <div class="benefit-card"><h4>Asesoría fiscal incluida</h4><p>No solo llevamos los números. Te asesoramos estratégicamente para que pagues lo justo y no más.</p></div>
+          <div class="benefit-card"><h4>Equipo especializado supervisado</h4><p>Tu empresa es atendida por contadores especializados supervisados directamente por César Ramírez.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Lo que hacemos cada mes</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Recopilación de información</h4><p>Recibimos tus facturas, estados de cuenta y documentos de forma digital. Sin que vayas a ningún lado.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Registro y conciliación</h4><p>Registramos y conciliamos todos los movimientos contables con precisión y apego a las normas vigentes.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Declaraciones y pagos</h4><p>Calculamos y presentamos todas tus obligaciones fiscales dentro de los plazos establecidos.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Reporte ejecutivo</h4><p>Te enviamos un resumen mensual claro con tus estados financieros y situación fiscal actualizada.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-contabilidad">
+        <h2>Solicitar cotización de contabilidad</h2>
+        <p>Cuéntanos sobre tu empresa y te enviamos una propuesta en menos de 24 horas.</p>
+        <form onsubmit="handleForm(event,'contabilidad')">
+          <div class="form-row">
+            <div class="field"><label>Nombre *</label><input type="text" placeholder="Tu nombre completo" required/></div>
+            <div class="field"><label>WhatsApp *</label><input type="tel" placeholder="+52 492 1561111" required/></div>
+          </div>
+          <div class="field"><label>Régimen Fiscal *</label>
+            <select required>
+              <option value="" disabled selected>Seleccione un régimen</option>
+              <option>601 - General de Ley Personas Morales</option>
+              <option>603 - Personas Morales con Fines no Lucrativos</option>
+              <option>605 - Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
+              <option>606 - Arrendamiento</option>
+              <option>607 - Régimen de Enajenación o Adquisición de Bienes</option>
+              <option>608 - Demás ingresos</option>
+              <option>610 - Residentes en el Extranjero sin Establecimiento Permanente en México</option>
+              <option>611 - Ingresos por Dividendos (socios y accionistas)</option>
+              <option>612 - Personas Físicas con Actividades Empresariales y Profesionales</option>
+              <option>614 - Ingresos por intereses</option>
+              <option>615 - Régimen de los ingresos por obtención de premios</option>
+              <option>616 - Sin obligaciones fiscales</option>
+              <option>620 - Sociedades Cooperativas de Producción</option>
+              <option>621 - Incorporación Fiscal</option>
+              <option>622 - Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
+              <option>623 - Opcional para Grupos de Sociedades</option>
+              <option>624 - Coordinados</option>
+              <option>625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+              <option>626 - Régimen Simplificado de Confianza</option>
+            </select>
+          </div>
+          <div class="field"><label>Giro de la empresa</label><input type="text" placeholder="Ej: comercio, servicios, manufactura"/></div>
+          <div class="form-row">
+            <div class="field"><label>CFDI de ingresos aproximados al mes</label><input type="text" placeholder="Ej: 50"/></div>
+            <div class="field"><label>CFDI de egresos aproximados al mes</label><input type="text" placeholder="Ej: 30"/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Años en operación</label><input type="text" placeholder="Ej: 5"/></div>
+            <div class="field"><label>Número de trabajadores</label><input type="text" placeholder="Ej: 12"/></div>
+          </div>
+          <div class="field"><label>¿Tiene operaciones con clientes o proveedores extranjeros?</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="ext-cont" value="si"/> Sí</label>
+              <label class="radio-opt"><input type="radio" name="ext-cont" value="no"/> No</label>
+            </div>
+          </div>
+          <div class="field"><label>¿Tiene o ha tenido auditorías con autoridades fiscales?</label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="aud-cont" value="si"/> Sí</label>
+              <label class="radio-opt"><input type="radio" name="aud-cont" value="no"/> No</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Facturación estimada 2026</label><input type="text" placeholder="Ej: 2,000,000.00"/></div>
+            <div class="field"><label>Estado y municipio del domicilio fiscal</label><input type="text" placeholder="Ej: Zacatecas, Zacatecas"/></div>
+          </div>
+          <div class="field"><label>Deseo que:</label>
+            <div class="check-opt-group">
+              <label class="check-opt"><input type="checkbox"/> Lleven mi contabilidad completa mensualmente</label>
+              <label class="check-opt"><input type="checkbox"/> Revisen y asesoren mensualmente a mi contador interno</label>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">Solicitar cotización →</button>
+          <div class="success-msg" id="success-contabilidad"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te enviamos una propuesta en menos de 24 horas.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 06 DEFENSA FISCAL -->
+<div class="view" id="view-defensa">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 06 / 08. LEGAL</span>
+        <h1>Defensa Fiscal</h1>
+        <p>Te defendemos y representamos ante las autoridades como SAT, IMSS, INFONAVIT, Secretarías de Finanzas y Tesorerías en auditorías, requerimientos, liquidaciones y procedimientos contenciosos.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('defensa')">Solicitar defensa →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Representación ante SAT, IMSS, INFONAVIT</div>
+          <div class="check-item"><div class="chk">✓</div>Atención de auditorías y revisiones</div>
+          <div class="check-item"><div class="chk">✓</div>Respuesta a requerimientos y liquidaciones</div>
+          <div class="check-item"><div class="chk">✓</div>Impugnación de resoluciones fiscales</div>
+          <div class="check-item"><div class="chk">✓</div>Recursos de revocación y juicios</div>
+          <div class="check-item"><div class="chk">✓</div>Acuerdos conclusivos ante PRODECON</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Situaciones que atendemos</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Auditorías del SAT</h4><p>Revisiones de gabinete, visitas domiciliarias y revisiones electrónicas. Te acompañamos en todo el proceso.</p></div>
+          <div class="benefit-card"><h4>Cartas invitación y requerimientos</h4><p>Respondemos correctamente cada requerimiento para evitar que escale a créditos fiscales o embargos.</p></div>
+          <div class="benefit-card"><h4>Créditos fiscales y embargos</h4><p>Impugnamos créditos fiscales improcedentes y gestionamos la suspensión de embargos y ejecuciones.</p></div>
+          <div class="benefit-card"><h4>Cancelación de sellos digitales</h4><p>Atendemos y resolvemos la cancelación de certificados que paralizan tu facturación electrónica.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Estrategia de defensa</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Análisis del caso</h4><p>Revisamos los documentos de la autoridad, identificamos los argumentos disponibles y evaluamos el riesgo real.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Estrategia de defensa</h4><p>Diseñamos la mejor estrategia: acuerdo conclusivo, recurso de revocación o juicio contencioso administrativo.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Representación activa</h4><p>Actuamos ante la autoridad en tu nombre, protegiéndote en cada etapa del procedimiento.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Resolución y seguimiento</h4><p>Te informamos del avance y gestionamos el cumplimiento o impugnación de la resolución final.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-defensa">
+        <h2>Solicitar defensa fiscal</h2>
+        <p>Cuéntanos tu situación y te contactamos de inmediato para evaluar tu caso.</p>
+        <form onsubmit="handleForm(event,'defensa')">
+          <div class="form-row">
+            <div class="field"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre" required/></div>
+            <div class="field"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Teléfono *</label><input type="tel" placeholder="+52 000 000 0000" required/></div>
+            <div class="field"><label>Autoridad involucrada *</label><select required><option value="" disabled selected>Selecciona autoridad</option><option>SAT</option><option>IMSS</option><option>INFONAVIT</option><option>Secretaría de Finanzas Estatal</option><option>Tesorería Municipal</option><option>Varias autoridades</option></select></div>
+          </div>
+          <div class="field"><label>Tipo de situación *</label><select required><option value="" disabled selected>¿Qué tipo de problema tienes?</option><option>Carta invitación o requerimiento</option><option>Auditoría o revisión en proceso</option><option>Crédito fiscal o liquidación</option><option>Embargo o ejecución</option><option>Cancelación de sellos digitales</option><option>Otro</option></select></div>
+          <div class="field"><label>Describe tu situación *</label><textarea placeholder="¿Qué documento recibiste? ¿Cuándo? ¿Cuánto es el monto? Cualquier detalle es útil." required></textarea></div>
+          <button type="submit" class="form-submit">Solicitar defensa urgente →</button>
+          <div class="success-msg" id="success-defensa"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud recibida. Por la urgencia del asunto te contactaremos a la brevedad.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 07 CONTRATOS -->
+<div class="view" id="view-contratos">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 07 / 08. CORPORATIVO</span>
+        <h1>Contratos y Documentación Legal</h1>
+        <p>Elaboración de contratos corporativos y papelería societaria como libros sociales y actas de asamblea, con respaldo jurídico experto para proteger los intereses de tu empresa y sus socios.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('contratos')">Solicitar documento →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Contratos de compraventa y servicios</div>
+          <div class="check-item"><div class="chk">✓</div>Contratos de arrendamiento y uso</div>
+          <div class="check-item"><div class="chk">✓</div>Actas de asamblea ordinaria y extraordinaria</div>
+          <div class="check-item"><div class="chk">✓</div>Libros corporativos y estatutos sociales</div>
+          <div class="check-item"><div class="chk">✓</div>Convenios de socios y accionistas</div>
+          <div class="check-item"><div class="chk">✓</div>Contratos laborales y NDAs</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Tipos de documentos que elaboramos</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Contratos corporativos</h4><p>Acuerdos entre socios, convenios de coinversión, contratos de confidencialidad y documentos de gobierno corporativo.</p></div>
+          <div class="benefit-card"><h4>Contratos comerciales</h4><p>Compraventa, arrendamiento, prestación de servicios, distribución y representación comercial.</p></div>
+          <div class="benefit-card"><h4>Papelería societaria</h4><p>Actas de asamblea, libros de accionistas, estatutos sociales y documentos para cambios societarios.</p></div>
+          <div class="benefit-card"><h4>Contratos laborales</h4><p>Contratos individuales y colectivos, reglamentos internos y políticas de empresa con apego a la LFT.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Proceso de elaboración</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Briefing inicial</h4><p>Recopilamos la información: partes involucradas, objeto del contrato y condiciones específicas.</p></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Redacción del documento</h4><p>Elaboramos el documento con lenguaje jurídico preciso, claro y adaptado a la legislación vigente.</p></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Revisión y ajustes</h4><p>Te enviamos el borrador para revisión y realizamos los ajustes necesarios hasta tu satisfacción.</p></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><h4>Entrega final</h4><p>Entregamos el documento en formato editable y PDF listo para firma, con asesoría sobre la formalización.</p></div></div>
+        </div>
+      </div>
+      <div class="wa-cta-box" id="form-contratos">
+        <h2>¿Necesitas un contrato o documento legal?</h2>
+        <p>Escríbenos directamente por WhatsApp y con gusto te orientamos sobre el documento que necesitas, resolvemos tus dudas y te damos una cotización rápida.</p>
+        <a href="https://api.whatsapp.com/send/?phone=5214922507799&text=Hola%2Cquiero+informaci%C3%B3n+de+contratos+y+papeler%C3%ADa+societaria&type=phone_number&app_absent=0" target="_blank" class="wa-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.12 1.528 5.85L0 24l6.335-1.61A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.947 0-3.762-.527-5.316-1.443l-.38-.226-3.961 1.007.986-3.862-.249-.396A9.793 9.793 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- VIEW: 08 CURSOS -->
+<div class="view" id="view-cursos">
+  <div class="nav-outer"><nav class="top">
+    <div class="logo-wrap" onclick="showView('home')" role="button"><img src="LOGO.png" alt="Ramírez Guzmán" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><span class="logo-text" style="display:none">Ramírez Guzmán</span></div>
+    <div class="nav-links"><a href="index.Home_(standalone).html">Inicio</a><a class="active" onclick="showView('home')">Servicios</a><a href="https://api.whatsapp.com/send/?phone=524922507799&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Contacto</a><a href="index.Home_(standalone).html#testimonials">Testimonios</a><a href="index.Home_(standalone).html#redes">Redes</a><a href="recursos.html">Recursos</a><a href="blog.html">Blog</a></div>
+    <button class="nav-cta" onclick="showModal()">Agendar →</button>
+  </nav></div>
+  <div class="detail-wrap">
+    <button class="detail-back" onclick="showView('home')">← Todos los servicios</button>
+    <div class="detail-hero">
+      <div>
+        <span class="d-number">SERVICIO 08 / 08. FORMACIÓN</span>
+        <h1>Cursos y Capacitación</h1>
+        <p>Programas de formación fiscal y legal especializada para empresarios, contadores y abogados. Mantente actualizado en la normativa vigente y fortalece el conocimiento de tu equipo.</p>
+        <div class="d-cta-row">
+          <button class="btn-primary" onclick="scrollToForm('cursos')">Solicitar información →</button>
+          <button class="btn-ghost" onclick="showView('home')">Ver todos los servicios</button>
+        </div>
+        <div class="pdf-actions">
+          <a href="PDF/Brochure PFI 2026 2.pdf" target="_blank" class="pdf-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Ver brochure</a>
+          <a href="PDF/Brochure PFI 2026 2.pdf" download class="pdf-btn dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar PDF</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>¿Qué incluye?</h3>
+        <div class="check-list">
+          <div class="check-item"><div class="chk">✓</div>Cursos presenciales y en línea</div>
+          <div class="check-item"><div class="chk">✓</div>Material didáctico incluido</div>
+          <div class="check-item"><div class="chk">✓</div>Constancia de participación</div>
+          <div class="check-item"><div class="chk">✓</div>Capacitación empresarial in-company</div>
+          <div class="check-item"><div class="chk">✓</div>Actualización en reformas fiscales</div>
+          <div class="check-item"><div class="chk">✓</div>Sesiones de preguntas y respuestas</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-section">
+        <h2>Programas disponibles</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card"><h4>Para empresarios</h4><p>Aprende a leer tus declaraciones, entender tu situación tributaria y tomar mejores decisiones estratégicas.</p></div>
+          <div class="benefit-card"><h4>Para contadores</h4><p>Actualización en reformas fiscales, criterios del SAT, planeación tributaria y nuevas obligaciones de cumplimiento.</p></div>
+          <div class="benefit-card"><h4>Para abogados</h4><p>Formación en derecho fiscal, defensa ante autoridades, juicio contencioso administrativo y PRODECON.</p></div>
+          <div class="benefit-card"><h4>Capacitación empresarial</h4><p>Programas a la medida para el equipo contable y financiero de tu empresa, impartidos en tus instalaciones.</p></div>
+        </div>
+      </div>
+      <div class="detail-section">
+        <h2>Temas frecuentes</h2>
+        <div class="process-steps">
+          <div class="step"><div class="step-num">•</div><div class="step-content"><h4>Reforma fiscal anual</h4><p>Análisis detallado de los cambios en ISR, IVA y otras contribuciones que afectan tu empresa cada año.</p></div></div>
+          <div class="step"><div class="step-num">•</div><div class="step-content"><h4>Planeación fiscal para empresas</h4><p>Estrategias legales para reducir la carga fiscal y optimizar el flujo de efectivo de forma sostenible.</p></div></div>
+          <div class="step"><div class="step-num">•</div><div class="step-content"><h4>CFDI y facturación electrónica</h4><p>Correcto uso, requisitos y resguardo de comprobantes fiscales digitales para deducciones válidas.</p></div></div>
+          <div class="step"><div class="step-num">•</div><div class="step-content"><h4>Defensa fiscal práctica</h4><p>Cómo responder a requerimientos y auditorías del SAT de forma correcta y sin cometer errores costosos.</p></div></div>
+        </div>
+      </div>
+      <div class="form-section" id="form-cursos">
+        <h2>Inscribirse o solicitar información</h2>
+        <p>Cuéntanos qué tipo de capacitación necesitas y te enviamos el calendario disponible.</p>
+        <form onsubmit="handleForm(event,'cursos')">
+          <div class="form-row">
+            <div class="field"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre" required/></div>
+            <div class="field"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Teléfono</label><input type="tel" placeholder="+52 000 000 0000"/></div>
+            <div class="field"><label>Perfil *</label><select required><option value="" disabled selected>¿Eres…?</option><option>Empresario / Director</option><option>Contador</option><option>Abogado</option><option>Estudiante</option><option>Otro</option></select></div>
+          </div>
+          <div class="field"><label>Modalidad preferida</label><select><option value="" disabled selected>Selecciona modalidad</option><option>En línea (videollamada / grabado)</option><option>Presencial</option><option>Capacitación in-company</option><option>Indiferente</option></select></div>
+          <div class="field"><label>¿Qué tema te interesa?</label><textarea placeholder="Describe el tema o área fiscal/legal en la que te quieres capacitar."></textarea></div>
+          <button type="submit" class="form-submit">Solicitar información →</button>
+          <div class="success-msg" id="success-cursos"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Solicitud enviada. Te enviamos el calendario y opciones disponibles en breve.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Ramírez Guzmán. Servicios Fiscales y Legales.</footer>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:7px;color:var(--ink)">Agendar llamada</h2>
+    <p style="color:var(--ink-dim);font-size:13.5px;margin-bottom:24px">Cuéntanos tu situación y te contactamos en menos de 24 horas.</p>
+    <form onsubmit="handleForm(event,'modal')">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="field"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre" required/></div>
+        <div class="field"><label>Correo electrónico *</label><input type="email" placeholder="correo@empresa.com" required/></div>
+        <div class="field"><label>Teléfono</label><input type="tel" placeholder="+52 000 000 0000"/></div>
+        <div class="field"><label>Servicio de interés</label><select><option value="" disabled selected>¿En qué podemos ayudarte?</option><option>Asesoría Fiscal y Legal</option><option>Planeación Fiscal Integral</option><option>Revisión de Cumplimiento Fiscal</option><option>Proyectos Inmobiliarios</option><option>Contabilidad Integral</option><option>Defensa Fiscal</option><option>Contratos y Documentación Legal</option><option>Cursos y Capacitación</option><option>No estoy seguro. Necesito orientación</option></select></div>
+        <div class="field"><label>Mensaje</label><textarea style="height:84px" placeholder="Cuéntanos brevemente tu situación o duda principal."></textarea></div>
+        <button type="submit" class="form-submit" style="width:100%;justify-content:center">Enviar solicitud →</button>
+        <div class="success-msg" id="success-modal"><svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="#51CF66" stroke-width="3"/><path d="M14 27l8 8 18-18" stroke="#51CF66" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Listo. Te contactaremos en menos de 24 horas.</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+/* SPA ROUTER */
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const t=document.getElementById('view-'+name);
+  if(t) t.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showService(name){ showView(name); }
+function goHome(){ window.location.href='index.Home_(standalone).html'; }
+
+function scrollToServices(){
+  setTimeout(()=>{
+    const el=document.getElementById('services-anchor');
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  },80);
+}
+function scrollToForm(id){
+  const el=document.getElementById('form-'+id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* MODAL */
+function showModal(){
+  document.getElementById('modal-overlay').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal-overlay').style.display='none';
+  document.body.style.overflow='';
+}
+document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* FORMS — CRM via backend (Velora en Railway). El PAT de Airtable ya no vive
+   en el cliente; el backend recibe el payload y lo reenvia a Airtable. */
+const _CRM_ENDPOINT = (typeof window !== 'undefined' && window.CRM_LEAD_ENDPOINT)
+  ? window.CRM_LEAD_ENDPOINT
+  : 'https://velora-production-c072.up.railway.app/api/public/lead';
+const _SVC_MAP  = {
+  asesoria:'Asesoria', planeacion:'Planeacion', cumplimiento:'Cumplimiento',
+  contabilidad:'Contabilidad', defensa:'Defensa Fiscal', inmobiliario:'Inmobiliario',
+  cursos:'Cursos', modal:'Otro'
+};
+
+function _crmGet(form,...kws){
+  for(const f of form.querySelectorAll('.field')){
+    const lbl=(f.querySelector('label')?.textContent||'').toLowerCase();
+    if(kws.some(k=>lbl.includes(k.toLowerCase()))){
+      const el=f.querySelector('input,textarea,select');
+      if(el) return el.value.trim();
+    }
+  }
+  for(const kw of kws){
+    const el=form.querySelector(`input[placeholder*="${kw}"],textarea[placeholder*="${kw}"]`);
+    if(el) return el.value.trim();
+  }
+  return '';
+}
+
+function _crmDetails(form){
+  const lines=[];
+  form.querySelectorAll('.field').forEach(f=>{
+    const lbl=(f.querySelector('label')?.textContent||'').trim();
+    const el=f.querySelector('input:not([type=submit]),textarea,select');
+    if(!el||!lbl) return;
+    let val='';
+    if(el.type==='checkbox'||el.type==='radio'){ if(!el.checked) return; val=el.value||lbl; }
+    else { val=el.value.trim(); }
+    if(val) lines.push(lbl.replace(/\s*\*\s*$/,'')+': '+val);
+  });
+  return lines.join('\n');
+}
+
+function showFormSuccess(form, id) {
+  const successEl = document.getElementById('success-' + id);
+  if (!successEl) return;
+  const container = form.closest('.form-section, .modal-box, .wa-cta-box') || form.parentElement;
+  if (container && successEl.parentElement !== container) {
+    container.appendChild(successEl);
+  }
+  if (container) {
+    Array.from(container.children).forEach(child => {
+      if (child !== successEl) child.style.display = 'none';
+    });
+  }
+  successEl.style.display = 'block';
+  void successEl.offsetWidth;
+  successEl.classList.add('is-visible');
+  setTimeout(() => successEl.scrollIntoView({behavior: 'smooth', block: 'center'}), 80);
+}
+
+function handleForm(e,id){
+  e.preventDefault();
+  const form=e.target;
+  const submitBtn=form.querySelector('button[type=submit]');
+  const origTxt=submitBtn?.textContent||'Enviar →';
+  form.querySelectorAll('input,textarea,select,button[type=submit]').forEach(el=>el.disabled=true);
+  if(submitBtn) submitBtn.textContent='Enviando…';
+
+  const nombre  =_crmGet(form,'nombre');
+  const correo  =_crmGet(form,'correo','email');
+  const tel     =_crmGet(form,'teléfono','telefono','whatsapp','WhatsApp');
+  const empresa =_crmGet(form,'empresa','compañía','giro');
+  const detalles=_crmDetails(form);
+  const servicio=_SVC_MAP[id]||'Otro';
+
+  const perfilEl=form.querySelector('select');
+  const esEstudiante=id==='cursos'&&perfilEl&&perfilEl.value==='Estudiante';
+
+  let payload;
+  if(esEstudiante){
+    payload={
+      tipo:     'estudiante',
+      nombre:   nombre||'Sin nombre',
+      correo:   correo,
+      telefono: tel,
+      servicio: 'Cursos',
+      tema:     _crmGet(form,'tema','interés','interes'),
+      origen:   'Servicios'
+    };
+  } else {
+    payload={
+      tipo:     'corporativo',
+      nombre:   nombre||'Sin nombre',
+      correo:   correo,
+      whatsapp: tel,
+      empresa:  empresa,
+      servicio: servicio,
+      mensaje:  detalles,
+      origen:   'Servicios'
+    };
+  }
+
+  fetch(_CRM_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(r=>r.json().then(d=>({ok:r.ok,data:d})))
+  .then(result=>{
+    if(result.ok && result.data && result.data.ok){
+      showFormSuccess(form, id);
+    } else { throw new Error((result.data && result.data.error)||'Error'); }
+  })
+  .catch(err=>{
+    form.querySelectorAll('input,textarea,select,button[type=submit]').forEach(el=>el.disabled=false);
+    if(submitBtn) submitBtn.textContent='Enviar →';
+    console.error('[CRM Servicios]',err);
+    alert('Error al enviar. Por favor intenta de nuevo o contáctanos directamente.');
+  });
+}
+</script>
+<script src="form-widget.js"></script>
+<script src="redes-dropdown.js"></script>
+<script src="rg-animations.js"></script>
+</body>
+</html>
